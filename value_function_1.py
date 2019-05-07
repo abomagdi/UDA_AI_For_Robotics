@@ -32,7 +32,7 @@ def compute_value(init, grid,goal,cost):
     
     # make sure your function returns a grid of values as 
     # demonstrated in the previous video.
-    value = [[0 for row in range(len(grid[0]))] for col in range(len(grid))]
+    value = [[99 for row in range(len(grid[0]))] for col in range(len(grid))]
     
     x = init[0]
     y = init[1]
