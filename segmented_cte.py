@@ -489,8 +489,26 @@ def run(grid, goal, spath, params, printflag = False, speed = 0.1, timeout = 100
         # start with the present robot estimate
         estimate = filter.get_position()
 
+        if(index < len(spath)):
+            u = 2
+            while(u > 1):
+                x1 = spath[index][0]
+                x2 = spath[index+1][0]
+                y1 = spath[index][1]
+                y2 = spath[index + 1][1]
+                delta_x = x2 - x1
+                delta_y = y2 - y1
+                rx = estimate[0] - x1
+                ry = estimate[1] - y1
+                normalizer = (delta_x * delta_x) + (delta_y * delta_y)
+                cte = ((ry * delta_x) - (rx * delta_y)) / normalizer
+                u = ((rx * delta_x) + (ry * delta_y)) / normalizer
+                if(u > 1):
+                    index += 1
+        #print(spath)
+        #print(estimate)
         ### ENTER CODE HERE
-        
+        #cte = estimate - spath
 
         # ----------------------------------------
 
